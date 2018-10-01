@@ -5,6 +5,11 @@
  */
 $(document).ready(function () {
 
+    $('#destinatario-incluir').on('change', function () {
+        alert('ttttttttttttttttttttttttttttttttttt');
+        SelectDestinatarioIncluir(this.value, this);
+    })
+
     $('#cancelar-inclusao').click(function () {
         var url = $('#cancelar-inclusao').attr('data-url');
         $(location).attr('href', url);
@@ -47,6 +52,18 @@ $(document).ready(function () {
         return true;
     }
 
+    function SelectDestinatarioIncluir(index, el) {
+        if (el.value == "-1") {
+            msg1 = "Favor selecionar o Destinatario da mensagem...";         
+            $('#destinatario-group').attr('class', 'form-group has-error');
+            $("#msgDestinatario").text(msg1).show();
+        } else {
+            msg1 = '';
+            $('#destinatario-group').attr('class', 'form-group');
+            $("#erroPrioridade").text(msg1).show();
+        }
+    }
+
     function ConfirmarInclusaoMural() {
         var recado = $('#recado-incluir').val();
         var prior = $('#prioridade-incluir').val();
@@ -72,7 +89,7 @@ $(document).ready(function () {
             $("#msgResposta").text(msg1).show();
         } else {
             msg2 = '';
-            $('#resposta-group').attr('class', 'form-group');            
+            $('#resposta-group').attr('class', 'form-group');
             $("#msgResposta").text(msg2).show();
         }
 

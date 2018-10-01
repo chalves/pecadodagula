@@ -82,12 +82,12 @@ $foto = 'assets/img/fotos/' . $dadosLogin['fotoUsuario'];
 
                         <div id="recado-group" class="form-group">
                             <div class="input-group">      
-                                <label for="recado">Mensagem</label>      
+                                <label for="recado-incluir">Mensagem</label>      
                                 <a href="#" >        
                                     <i class="fa fa-info-circle mypopover " data-toggle="popover" data-placement="right" title="Mensagem do Recado" 
                                        data-content="Digite a sua mensagem de forma clara e enjuta" ></i>
                                 </a>    
-                                <textarea  class="form-control"  name="recado" rows="4"  cols="80" required  id="recado-incluir"
+                                <textarea  class="form-control"  name="recado-incluir" rows="4"  cols="80" required  id="recado-incluir"
                                            placeholder="Digite o recado ... "  > </textarea>                            
                                 <span id="msgRecado" class="help-block"></span>
                             </div>  <!--  Fim  Input group   -->

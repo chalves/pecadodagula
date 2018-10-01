@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 13-Set-2018 às 06:35
+-- Generation Time: 01-Out-2018 às 20:02
 -- Versão do servidor: 5.7.21
 -- PHP Version: 5.6.35
 
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `cargos` (
   `status` int(1) NOT NULL DEFAULT '1',
   `dateAlteracao` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `cargos`
@@ -43,7 +43,8 @@ CREATE TABLE IF NOT EXISTS `cargos` (
 
 INSERT INTO `cargos` (`id`, `descricao`, `status`, `dateAlteracao`) VALUES
 (1, 'Sócio-Gerente', 1, '2018-09-13 01:40:23'),
-(2, 'Chef de Cozinha', 1, '2018-09-13 01:40:23');
+(2, 'Chef de Cozinha', 1, '2018-09-13 01:40:23'),
+(3, 'Auxiliar de Cozinha', 1, '2018-09-13 04:52:26');
 
 -- --------------------------------------------------------
 
@@ -103,6 +104,7 @@ CREATE TABLE IF NOT EXISTS `empresas` (
   `razaoSocial` varchar(150) NOT NULL,
   `cgc` varchar(20) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '1',
+  `implantada` int(1) NOT NULL DEFAULT '0',
   `endereco` varchar(250) NOT NULL,
   `contato` varchar(60) DEFAULT NULL,
   `telContato` varchar(15) DEFAULT NULL,
@@ -129,18 +131,18 @@ CREATE TABLE IF NOT EXISTS `empresas` (
 -- Extraindo dados da tabela `empresas`
 --
 
-INSERT INTO `empresas` (`id`, `codigo`, `nomeFantasia`, `razaoSocial`, `cgc`, `status`, `endereco`, `contato`, `telContato`, `celContato`, `email`, `site`, `taxaServico`, `cobraFrete`, `totalTicket`, `ticketMedio`, `qtdeTicket`, `logo`, `idLoja`, `aberto`, `abre`, `fecha`, `cep`, `uf`, `tipo`) VALUES
-(1, NULL, 'Bar Mont Alegre', 'Bar e Lanchonete Mont Alegre Ltda', '01.123.456/0001-00', 1, 'Rua uruguai 194 Galeria - Tijuca - Riode janeiro ', 'Affonso Ceruzo', '21999991122', '21999991122', 'montalegre@gmail.com', NULL, 3, 1, 0, 0, '0', NULL, 1, 1, '08:30:00', '23:00:00', '20510060', 'RJ', 1),
-(2, NULL, 'Bar Britânia', 'Bar e Restaurante Britânia', '09001987000188', 1, 'Rua Desembargador Izidro, 10 Praça Saens Pena Tijuca Rio de janeiro', 'João ou Manoel', NULL, NULL, NULL, NULL, 0, 0, 0, 0, '0', NULL, 0, 0, '18:00:00', '23:00:00', '20510060', 'RJ', 1),
-(3, NULL, 'Bar Pinguso', 'Bar e Restaurante Pinguso', '09211987000188', 0, 'Rua Desembargador Izidro, 18 Praça Saens Pena Tijuca Rio de janeiro', 'Mária Português', NULL, NULL, NULL, NULL, 0, 0, 0, 0, '0', NULL, 0, 0, NULL, NULL, '20510061', 'RJ', 1),
-(4, NULL, 'testando', 'testando', '', 1, '', NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, '0', NULL, 0, 0, NULL, NULL, '', '', 1),
-(5, NULL, 'Carlos Henrique\'\' R Alves', 'restaurante sobe e desce', '', 1, '', NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, '0', NULL, 0, 0, NULL, NULL, '', 'RJ', 1),
-(6, NULL, 'Bar Santo Cristo', 'Bar e Lanchonete Santo Cristo Ltda', '', 1, '', NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, '0', NULL, 0, 0, NULL, NULL, '', 'RJ', 1),
-(7, NULL, 'Bar Santo Cristo', 'Bar e Lanchonete Santo Cristo Ltda', '', 1, '', NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, '0', NULL, 0, 0, NULL, NULL, '', 'RJ', 1),
-(8, NULL, 'Bar Santo Cristo', 'Bar e Lanchonete Santo Cristo Ltda', '', 1, '', NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, '0', NULL, 0, 0, NULL, NULL, '', 'RJ', 1),
-(9, NULL, 'testando', 'testando restaurante', '', 1, '', NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, '0', NULL, 0, 0, NULL, NULL, '', 'RJ', 1),
-(10, NULL, 'testando', 'testando restaurante', '', 1, '', NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, '0', NULL, 0, 0, NULL, NULL, '', 'RJ', 1),
-(11, NULL, 'testando', 'testando restaurante', '', 1, '', NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, '0', NULL, 0, 0, NULL, NULL, '', 'RJ', 1);
+INSERT INTO `empresas` (`id`, `codigo`, `nomeFantasia`, `razaoSocial`, `cgc`, `status`, `implantada`, `endereco`, `contato`, `telContato`, `celContato`, `email`, `site`, `taxaServico`, `cobraFrete`, `totalTicket`, `ticketMedio`, `qtdeTicket`, `logo`, `idLoja`, `aberto`, `abre`, `fecha`, `cep`, `uf`, `tipo`) VALUES
+(1, NULL, 'Bar Mont Alegre', 'Bar e Lanchonete Mont Alegre Ltda', '01.123.456/0001-00', 1, 1, 'Rua uruguai 194 Galeria - Tijuca - Riode janeiro ', 'Affonso Ceruzo', '21999991122', '21999991122', 'montalegre@gmail.com', NULL, 3, 1, 0, 0, '0', NULL, 1, 0, '08:30:00', '23:00:00', '20510060', 'RJ', 1),
+(2, NULL, 'Bar Britânia', 'Bar e Restaurante Britânia', '09001987000188', 1, 0, 'Rua Desembargador Izidro, 10 Praça Saens Pena Tijuca Rio de janeiro', 'João ou Manoel', NULL, NULL, NULL, NULL, 0, 0, 0, 0, '0', NULL, 0, 0, '18:00:00', '23:00:00', '20510060', 'RJ', 1),
+(3, NULL, 'Bar Pinguso', 'Bar e Restaurante Pinguso', '09211987000188', 0, 0, 'Rua Desembargador Izidro, 18 Praça Saens Pena Tijuca Rio de janeiro', 'Mária Português', NULL, NULL, NULL, NULL, 0, 0, 0, 0, '0', NULL, 0, 0, NULL, NULL, '20510061', 'RJ', 1),
+(4, NULL, 'testando', 'testando', '', 1, 0, '', NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, '0', NULL, 0, 0, NULL, NULL, '', '', 1),
+(5, NULL, 'Carlos Henrique\'\' R Alves', 'restaurante sobe e desce', '', 1, 0, '', NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, '0', NULL, 0, 0, NULL, NULL, '', 'RJ', 1),
+(6, NULL, 'Bar Santo Cristo', 'Bar e Lanchonete Santo Cristo Ltda', '', 1, 0, '', NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, '0', NULL, 0, 0, NULL, NULL, '', 'RJ', 1),
+(7, NULL, 'Bar Santo Cristo', 'Bar e Lanchonete Santo Cristo Ltda', '', 1, 0, '', NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, '0', NULL, 0, 0, NULL, NULL, '', 'RJ', 1),
+(8, NULL, 'Bar Santo Cristo', 'Bar e Lanchonete Santo Cristo Ltda', '', 1, 0, '', NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, '0', NULL, 0, 0, NULL, NULL, '', 'RJ', 1),
+(9, NULL, 'testando', 'testando restaurante', '', 1, 0, '', NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, '0', NULL, 0, 0, NULL, NULL, '', 'RJ', 1),
+(10, NULL, 'testando', 'testando restaurante', '', 1, 0, '', NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, '0', NULL, 0, 0, NULL, NULL, '', 'RJ', 1),
+(11, NULL, 'testando', 'testando restaurante', '', 1, 0, '', NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, '0', NULL, 0, 0, NULL, NULL, '', 'RJ', 1);
 
 -- --------------------------------------------------------
 
@@ -184,15 +186,28 @@ CREATE TABLE IF NOT EXISTS `mural` (
   `nome` varchar(100) NOT NULL,
   `lido` int(1) NOT NULL DEFAULT '0',
   `status` int(1) NOT NULL DEFAULT '1',
+  `prioridade` int(1) NOT NULL DEFAULT '1',
+  `resposta` text,
+  `dataResposta` datetime DEFAULT NULL,
+  `idOrigem` int(11) NOT NULL DEFAULT '-1',
+  `dataOrigem` datetime DEFAULT NULL,
+  `enviouResposta` int(1) NOT NULL DEFAULT '0',
+  `recadoOriginal` text,
+  `dataarquivado` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `mural`
 --
 
-INSERT INTO `mural` (`id`, `idEmpresa`, `idPara`, `recado`, `idDE`, `assunto`, `criado`, `nome`, `lido`, `status`) VALUES
-(1, 0, 2, 'Tem comprar o material para obra do kitinete', 1, 'Compra de Material', '2018-09-10 15:44:30', 'Raimundo Nonato', 0, 1);
+INSERT INTO `mural` (`id`, `idEmpresa`, `idPara`, `recado`, `idDE`, `assunto`, `criado`, `nome`, `lido`, `status`, `prioridade`, `resposta`, `dataResposta`, `idOrigem`, `dataOrigem`, `enviouResposta`, `recadoOriginal`, `dataarquivado`) VALUES
+(1, 0, 2, 'Tem comprar o material para obra do kitinete  sdsdsda  dsadad  dasda  asdadadad asdasda dasdad adasd asdad addad asdada asdada asdasd asdasd daasd', 1, 'Compra de Material PARA OBRA DO KITINETE EM SANTA CRUZ', '2018-09-10 15:44:30', 'Raimundo Nonato', 0, 1, 3, NULL, NULL, -1, NULL, 0, NULL, NULL),
+(2, 1, 2, 'testando recado 2', 3, 'Obra Caixa D\'Água', '2018-09-14 23:00:01', 'Raimundo Nonato', 1, 1, 1, NULL, '2018-09-24 00:23:19', -1, NULL, 0, NULL, NULL),
+(3, 1, 2, 'texto do recado 3', 4, 'Testando mural 3', '2018-09-16 16:08:40', 'Maria Aparecida', 1, 3, 2, ' hdgdsajhgjhgf jhdgfjh dgfj hdgjh dgjhdghjg', '2018-09-24 00:12:33', -1, NULL, 1, NULL, NULL),
+(4, 1, 2, 'Testando mural 4 mmmmmmmmmmmmmm mmmmm mmmmmmm mmmm mmmmmmmmmmmmmmmm mmmmmmmmmmmmmmmmmmmmmm bbbbbbbbbbbb nnnnnnnnnnnnnnnnnn hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh', 1, 'testando mural 4', '2018-09-16 16:08:40', 'Raimundo Nonato', 0, 1, 0, NULL, NULL, -1, NULL, 0, NULL, NULL),
+(5, 1, 2, 'Testando mural 5 qlkjlkjlkjlkjckljkljjlkjkljlkjlk\r\nnjkljlkkjlkkjjlkjl', 4, 'Testando mural 5', '2018-09-16 16:09:33', 'Maria Aparecida', 1, 1, 2, NULL, NULL, -1, NULL, 0, NULL, NULL),
+(6, 1, 2, 'Testando mural 6 mmmmmmmm mmmmmmmmmmmmm mmmmmmmm \r\n mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm bbbbbbbbbbbb nnnnnnnnnn nnnnnnnn hhhhhh hhhhhhhhhhhhh hhhhhhhhhhhh', 3, 'testando mural 6', '2018-09-16 16:09:33', 'Raimundo Nonato', 0, 2, 1, 'Resposta relativo ao recado enviado ao fulano no dia xx/xx/xxxx - Comprar material na casa show e contratar 1 eletricista e mais dois serventes para agilizar a reforma', '2018-09-20 11:15:48', -1, NULL, 1, NULL, '2018-09-25 11:32:12');
 
 -- --------------------------------------------------------
 
@@ -244,7 +259,7 @@ CREATE TABLE IF NOT EXISTS `perfil` (
   `status` tinyint(1) NOT NULL,
   `dateAlteracao` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `perfil`
@@ -256,10 +271,11 @@ INSERT INTO `perfil` (`id`, `descricao`, `status`, `dateAlteracao`) VALUES
 (3, 'DIRETOR', 1, NULL),
 (4, 'GERENTE', 1, NULL),
 (5, 'SUPERVISOR', 1, NULL),
-(6, 'REPRESENTANTE (VENDEDOR)', 1, '2018-09-13 00:41:07'),
+(6, 'REPRESENTANTE (VENDEDOR)   44', 1, '2018-09-22 16:21:06'),
 (7, 'CLIENTE', 1, '2018-09-13 00:47:29'),
 (8, 'VISITANTE', 0, '2018-09-13 01:48:23'),
-(11, 'testando 33 66 99', 0, '2018-09-13 01:53:30');
+(11, 'testando 33 66 99', 1, '2018-09-15 00:05:44'),
+(25, 'incluindo perfil demo', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -493,10 +509,10 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 --
 
 INSERT INTO `usuarios` (`idEmpresa`, `id`, `nome`, `login`, `email`, `senha`, `datacadastro`, `dataultimoacesso`, `perfilid`, `status`, `foto`, `celular`, `superAdmin`, `dataalteracao`, `dateLogin`, `dateLogout`, `cargo`, `nickname`, `ultimoLogin`, `dateBloqueio`, `dateDesbloqueio`, `logado`) VALUES
-(1, 1, 'Administrador', 'admin', 'vraalimentos@gmail.com', '123456', '2017-03-14 15:45:00', '2017-03-14 15:45:00', 1, 1, 'Foto-USR-001.jpg', '(21) 99928-3958', 0, NULL, '2018-09-11 22:24:57', NULL, 'Administrador', 'Carlos Henrique', NULL, NULL, NULL, 0),
-(1, 2, 'Super Administrador', 'spAdmin', 'vrawebhosting@gmail.com', '123456', '2018-09-10 15:25:25', NULL, 1, 1, 'Foto-USR-001.jpg', NULL, 1, NULL, '2018-09-13 03:16:10', '2018-09-11 19:32:14', 'Super Administrador', 'Faustão', '2018-09-11 21:53:15', NULL, NULL, 1),
-(1, 3, 'Raimundo Nonato', 'rnonato', 'vraservicos@gmail.com', '123456', '2018-09-10 15:43:19', NULL, 2, 1, 'Foto-USR-003.jpg', NULL, 0, NULL, NULL, NULL, NULL, 'Raimundo', NULL, NULL, NULL, 0),
-(1, 4, 'Maria Cida', 'mcida', 'vranonato@gmail.com', '123456', '2018-09-11 07:37:35', NULL, 2, 1, 'Foto-USR-004.jpg', NULL, 0, NULL, NULL, NULL, NULL, 'Cida', NULL, NULL, NULL, 0);
+(1, 1, 'Administrador', 'admin', 'vraalimentos@gmail.com', '123456', '2017-03-14 15:45:00', '2017-03-14 15:45:00', 1, 1, 'Foto-USR-001.jpg', '(21) 99928-3958', 0, NULL, '2018-09-23 00:47:39', '2018-09-22 21:48:48', 'Administrador', 'Carlos Henrique', '2018-09-14 23:30:39', NULL, NULL, 0),
+(1, 2, 'Super Administrador', 'spAdmin', 'vrawebhosting@gmail.com', '123456', '2018-09-10 15:25:25', NULL, 1, 1, 'Foto-USR-002.jpg', NULL, 1, NULL, '2018-10-01 17:12:19', '2018-10-01 14:12:00', 'Super Administrador', 'Faustão', '2018-10-01 17:02:20', '2018-09-22 23:48:41', '2018-09-23 02:48:53', 1),
+(1, 3, 'Raimundo Nonato', 'rnonato', 'vraservicos@gmail.com', '123456', '2018-09-10 15:43:19', NULL, 2, 1, 'Foto-USR-003.jpg', NULL, 0, NULL, NULL, NULL, 'Serviços Gerais', 'Raimundo', NULL, NULL, NULL, 0),
+(1, 4, 'Maria Cida', 'mcida', 'vranonato@gmail.com', '123456', '2018-09-11 07:37:35', NULL, 2, 1, 'Foto-USR-004.jpg', NULL, 0, NULL, NULL, NULL, 'Atendente', 'Cida', NULL, NULL, NULL, 0);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
