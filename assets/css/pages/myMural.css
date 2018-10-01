@@ -1,0 +1,61 @@
+body {
+    font-family: Arial;
+}
+
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+div.container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+.myDescription-block {
+    display: block;
+    margin: 10px 0;
+}
+.myDescription-block .myDescription-icon {
+    font-size: 16px;
+}
+.myDescription-block.margin-bottom {
+    margin-bottom: 25px;
+}
+.myDescription-block > .myDescription-header {
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
+    font-size: 16px;
+}
+.myDescription-block > .myDescription-text {
+    text-transform: capitalize;
+     word-break: break-all;
+    word-wrap: break-word;
+    white-space: normal; 
+    overflow: auto;
+    text-overflow: ellipsis;
+}
+
+
