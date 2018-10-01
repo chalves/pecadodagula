@@ -1,3 +1,42 @@
+<?php
+/**
+* THE SOFTWARE @@  PECADO DA GULA 
+ *
+ * @package    PecadoGula
+ * @author    Carlos Henrique ( Faustao )
+ * @copyright    Copyright (c) 2017 - 2018, VRA Web hosting, Ltda. (https://VRAWEBHOSTING.com/)
+ * @license    https://opensource.org/licenses/MIT    MIT License
+ * @link    http://pecadodagula.net
+ * @since    Version 1.0.0
+ * @filesource
+ */
+defined('BASEPATH') OR exit('No direct script access allowed');
+ 
+/**
+ * Class Home
+ *
+ *  Tela que exibe o dashboard contendo dados e indicadores sobre todo o Operacional do dia
+ *
+ * @package    PecadoGula    
+ * @subpackage   View
+ * @category    Dasboard
+ * @author        Carlos Henrique ( Faustao )
+ * @link       http://pecadodagula.net
+ * 
+ * Repositorio GitHub
+ * 
+ *  Nome : pecadodagula
+ * 
+ *  URL Acesso : https://github.com/chalves/pecadodagula.git 
+ */
+
+$dadosLogin = $this->session->userdata('logged_in');
+$empresaLogin = $this->session->userdata('empresa_login');
+$foto = 'assets/img/fotos/' . $dadosLogin['fotoUsuario'];
+// $logoEmpresa = 'assets/img/fotos/' . $empresaLogin['logo'];
+
+?>
+
 <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->

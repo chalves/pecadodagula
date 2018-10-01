@@ -27,7 +27,8 @@ class Usuario extends CI_Controller {
 
     function listar() {
         if ($this->session->userdata('logged_in')) {
-            $empresaLogin = $this->session->userdata('empresa_login');            
+            $empresaLogin = $this->session->userdata('empresa_login');                
+            
             $idEmpresa = $empresaLogin['id'];
             
             $this->load->model('model_usuarios');

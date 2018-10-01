@@ -1,19 +1,39 @@
 <?php
+/**
+ * THE SOFTWARE @@  PECADO DA GULA 
+ *
+ * @package    PecadoGula
+ * @author    Carlos Henrique ( Faustao )
+ * @copyright    Copyright (c) 2017 - 2018, VRA Web hosting, Ltda. (https://VRAWEBHOSTING.com/)
+ * @license    https://opensource.org/licenses/MIT    MIT License
+ * @link    http://pecadodagula.net
+ * @since    Version 1.0.0
+ * @filesource
+ */
 defined('BASEPATH') OR exit('No direct script access allowed');
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+
+/**
+ * View Home
+ *
+ * Template padrão para exibição das telas do Portal Administrativo
+ *
+ * @package    PecadoGula    
+ * @subpackage   View
+ * @category    Administração
+ * @author        Carlos Henrique ( Faustao )
+ * @link       http://pecadodagula.net
+ * 
+ * Repositorio GitHub
+ * 
+ *  Nome : pecadodagula
+ * 
+ *  URL Acesso : https://github.com/chalves/pecadodagula.git 
  */
 if ($this->session->userdata('logged_in')) {
     $dadosLogin = $this->session->userdata('logged_in');
-    $this->load->library('Model');
-    $this->load->model('model_empresa');    
-    $result = $this->model_empresa->estaAberto();
     $empresaLogin = $this->session->userdata('empresa_login');
-
+    
     if ($dadosLogin['logado'] == '1') {
-
         if ($dadosLogin['fotoUsuario'] != "") {
             $fotoLogin = 'assets/img/fotos/' . $dadosLogin['fotoUsuario'];
         } else {
@@ -26,9 +46,14 @@ if ($this->session->userdata('logged_in')) {
         //    $empresaLogin = 'assets/img/avatar/logoPadrao.png';
         //}
     }
+
     if ($dadosLogin['logado'] == '2') {
         redirect('suspender', 'refresh');
     }
+
+    $this->load->helper('My_empresa');
+    $empresaStatus = $this->session->userdata('$empresaStatus');
+
 } else {
     redirect('login', 'refresh');
 }

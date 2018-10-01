@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Autentica extends CI_Controller {
     
-    var $empresaImplantada;
+    var  $empresaImplantada;
 
     function __construct() {
         parent::__construct();
@@ -60,7 +60,7 @@ class Autentica extends CI_Controller {
             unset($_SERVER['senhausuario']);
             
             $empresaLogin = $this->session->userdata('empresa_login');
-            
+         
             if(  $empresaLogin['implantada'] == '1'  ){
                 redirect('home/dashboard', 'refresh');
             } else {
@@ -151,7 +151,7 @@ class Autentica extends CI_Controller {
         }
 
         $this->load->model('model_empresa');
-        $result = $this->model_empresa->consultarEmpresa($idEmpresa);
+        $result = $this->model_empresa->consultar($idEmpresa);
 
         if ((isset($result)) && (!empty($result))) {
             foreach ($result as $Empresa) {
@@ -181,6 +181,7 @@ class Autentica extends CI_Controller {
                     'uf' => $Empresa->uf,
                     'tipo' => $Empresa->tipo
                 );
+                $empresaImplantada = $Empresa->implantada;                
             }
             $this->session->set_userdata('empresa_login', $config_array_empresa);
             return TRUE;

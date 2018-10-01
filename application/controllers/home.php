@@ -1,4 +1,34 @@
 <?php
+/**
+* THE SOFTWARE @@  PECADO DA GULA 
+ *
+ * @package    PecadoGula
+ * @author    Carlos Henrique ( Faustao )
+ * @copyright    Copyright (c) 2017 - 2018, VRA Web hosting, Ltda. (https://VRAWEBHOSTING.com/)
+ * @license    https://opensource.org/licenses/MIT    MIT License
+ * @link    http://pecadodagula.net
+ * @since    Version 1.0.0
+ * @filesource
+ */
+defined('BASEPATH') OR exit('No direct script access allowed');
+ 
+/**
+ * Class Home
+ *
+ * Acionado após o processo de Autenticação do Usuário
+ *
+ * @package    PecadoGula    
+ * @subpackage   Controller
+ * @category    Administração
+ * @author        Carlos Henrique ( Faustao )
+ * @link       http://pecadodagula.net
+ * 
+ * Repositorio GitHub
+ * 
+ *  Nome : pecadodagula
+ * 
+ *  URL Acesso : https://github.com/chalves/pecadodagula.git 
+ */
 
 class Home extends CI_Controller {
 
@@ -200,18 +230,17 @@ class Home extends CI_Controller {
         }
     }
 
-// Fim da Function cadastraPerfil
+// Fim das Funcoes uper Administrador
 
     /*
      * DashBoard
      */
-
-    public function dashboard() {
+    public function dashboard() {        
         if ($this->session->userdata('logged_in')) {
             $dados['opcaoView'] = 'Dashboard';
             $dados['opcaoMenu'] = 'Dashboard';
             $dados ['telaativa'] = 'Dashboard';
-            $dados ['tela'] = 'dashboard/view_dashboard';
+            $dados ['tela'] = 'dashboard/view_dashboard';                    
             $this->load->view('view_home', $dados);
         } else {
             redirect('login', 'refresh');

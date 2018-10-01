@@ -1,13 +1,40 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * THE SOFTWARE @@  PECADO DA GULA 
+ *
+ * @package    PecadoGula
+ * @author    Carlos Henrique ( Faustao )
+ * @copyright    Copyright (c) 2017 - 2018, VRA Web hosting, Ltda. (https://VRAWEBHOSTING.com/)
+ * @license    https://opensource.org/licenses/MIT    MIT License
+ * @link    http://pecadodagula.net
+ * @since    Version 1.0.0
+ * @filesource
  */
+defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * Template View - sidebar
+ *
+ * Menu lateral esquerdo do template do Portal de Administração
+ *
+ * @package    PecadoGula    
+ * @subpackage   View
+ * @category    Administração
+ * @author        Carlos Henrique ( Faustao )
+ * @link       http://pecadodagula.net
+ * 
+ * Repositorio GitHub
+ * 
+ *  Nome : pecadodagula
+ * 
+ *  URL Acesso : https://github.com/chalves/pecadodagula.git 
+ */
 $dadosLogin = $this->session->userdata('logged_in');
 $empresaLogin = $this->session->userdata('empresa_login');
+
+$this->load->helper('My_empresa');
+$empresaStatus = $this->session->userdata('empresaStatus');
+
 // $logoEmpresa = 'assets/img/fotos/' . $empresaLogin['logo'];
 //var_dump( $empresaLogin);
 $fotoLogin = 'assets/img/fotos/' . $dadosLogin['fotoUsuario'];
@@ -319,8 +346,10 @@ $fotoLogin = 'assets/img/fotos/' . $dadosLogin['fotoUsuario'];
             <?php } ?>
             <!-- Final da Definição do Menu do Super Administrador  -->
 
-            <?php if ($empresaLogin['implantada'] == '1') { ?>     
-                <?php if ($empresaLogin['aberto'] == '1') { ?>     
+            <?php
+            if ($empresaStatus['implantada'] == '1') {
+                if ($empresaStatus['aberto'] == '1') {
+                    ?>     
                     <li class="header">OPERACIONAL</li>
                     <li><a href="#"><i class="fa fa-shopping-cart text-red"></i> <span>Vendas</span></a></li>
                     <li><a href="#"><i class="fa fa-industry text-yellow"></i> <span>Ordens de Produção</span></a></li>

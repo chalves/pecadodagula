@@ -1,9 +1,33 @@
 <?php
+/**
+* THE SOFTWARE @@  PECADO DA GULA 
+ *
+ * @package    PecadoGula
+ * @author    Carlos Henrique ( Faustao )
+ * @copyright    Copyright (c) 2017 - 2018, VRA Web hosting, Ltda. (https://VRAWEBHOSTING.com/)
+ * @license    https://opensource.org/licenses/MIT    MIT License
+ * @link    http://pecadodagula.net
+ * @since    Version 1.0.0
+ * @filesource
+ */
 defined('BASEPATH') OR exit('No direct script access allowed');
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ 
+/**
+ * Template View - header
+ *
+ * header do template do Portal de Administração
+ *
+ * @package    PecadoGula    
+ * @subpackage   View
+ * @category    Administração
+ * @author        Carlos Henrique ( Faustao )
+ * @link       http://pecadodagula.net
+ * 
+ * Repositorio GitHub
+ * 
+ *  Nome : pecadodagula
+ * 
+ *  URL Acesso : https://github.com/chalves/pecadodagula.git 
  */
 if (!$this->session->userdata('logged_in')) {
     redirect('login', 'refresh');
@@ -11,6 +35,7 @@ if (!$this->session->userdata('logged_in')) {
 
 $dadosLogin = $this->session->userdata('logged_in');
 $empresaLogin = $this->session->userdata('empresa_login');
+$empresaStatus = $this->session->userdata('empresaStatus');
 
 if ($dadosLogin['fotoUsuario'] != "") {
     $fotoLogin = 'assets/img/fotos/' . $dadosLogin['fotoUsuario'];
@@ -37,10 +62,10 @@ $idLogin = $dadosLogin['idUsuario'];
         </a>
         <div class="messages-menu pull-left" >
             <p style="font-size: 22px; color: #FFC414; font-weight: bold; margin-top: 8px">
-                <?php
+                <?php                                        
                 echo '    ' . $empresaLogin['nomeFantasia'] . '    ';
-                if ($empresaLogin['implantada'] == '1') {
-                    if ($empresaLogin['aberto'] == '1') {
+                if ($empresaStatus['implantada'] == '1') {
+                    if ($empresaStatus['aberto'] == '1') {
                         echo '<span class="label label-success">Aberto</span>';
                     } else {
                         echo '<span class="label label-danger">Fechado</span>';
@@ -60,9 +85,6 @@ $idLogin = $dadosLogin['idUsuario'];
                         <i class="fa fa-envelope-o"></i>
                         <span class="label label-info">
                             <?php
-//                            $idLogin = $dadosLogin["idUsuario"];                                                
-//                            $this->load->model('model_mural');
-//                            $resultMural = $this->model_mural->contarNaoLidos();
                             $this->db->select('*');
                             $this->db->where('lido', 0);
                             $this->db->where('idPara', $idLogin);

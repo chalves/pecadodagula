@@ -1,15 +1,38 @@
 <?php
 
-defined('BASEPATH') or exit('No direct script access allowed');
+/**
+ * THE SOFTWARE @@  PECADO DA GULA 
+ *
+ * @package    PecadoGula
+ * @author    Carlos Henrique ( Faustao )
+ * @copyright    Copyright (c) 2017 - 2018, VRA Web hosting, Ltda. (https://VRAWEBHOSTING.com/)
+ * @license    https://opensource.org/licenses/MIT    MIT License
+ * @link    http://pecadodagula.net
+ * @since    Version 1.0.0
+ * @filesource
+ */
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * Modelo model_usuario - Efetua a busca dos dados no banco
+ * Model - Base e Dados Empresa
  *
- * @author Wagner
+ * Contem funcionalidades para tratar e manipular as propriedades da tabela Empresa
+ *
+ * @package    PecadoGula    
+ * @subpackage   Model
+ * @category    Administração
+ * @author        Carlos Henrique ( Faustao )
+ * @link       http://pecadodagula.net
+ * 
+ * Repositorio GitHub
+ * 
+ *  Nome : pecadodagula
+ * 
+ *  URL Acesso : https://github.com/chalves/pecadodagula.git 
  */
 class Model_empresa extends CI_Model {
 
-    function buscarEmpresas() {
+    function listar() {
         $this->db->select('*');
         $this->db->from('empresas');
         // $this->db->where ( 'status', '1' );
@@ -27,7 +50,7 @@ class Model_empresa extends CI_Model {
 //        LJ : número sequencial que representa o Id da loja. A Matriz sempre será 00 (zero zero)   
     }
 
-    function consultarEmpresa($empresa) {
+    function consultar($empresa) {
         if ($empresa !== NULL) {
             $this->db->select('*');
             $this->db->from('empresas');
@@ -40,7 +63,7 @@ class Model_empresa extends CI_Model {
         }
     }
 
-    function cadastrarEmpresa($dados = NULL) {
+    function cadastrar($dados = NULL) {
         if ($dados !== NULL) {
             extract($dados);
             $this->db->insert('empresas', array(
@@ -54,7 +77,7 @@ class Model_empresa extends CI_Model {
         }
     }
 
-    function altualizarEmpresa($dados = NULL) {
+    function altualizar($dados = NULL) {
         if ($dados !== NULL) {
             extract($dados);
             $this->db->where('id', $dados['id']);
@@ -69,7 +92,7 @@ class Model_empresa extends CI_Model {
         }
     }
 
-    function deletarEmpresa($dados = NULL) {
+    function deletar($dados = NULL) {
         if ($dados !== NULL) {
             extract($dados);
             $this->db->where('id', $dados['id']);
@@ -83,32 +106,5 @@ class Model_empresa extends CI_Model {
         }
     }
 
-    public function estaAberto() {
-        if ($this->session->userdata('logged_in')) {
-            $empresa_login = $this->session->userdata('empresa_login');
-
-            $this->db->select('*');
-            $this->db->from('empresas');
-            $this->db->where('id', $empresa_login['id']);
-            $this->db->limit(1);
-            $query = $this->db->get();
-
-            $this->session->unset_userdata('empresa_login');
-
-            foreach ($query->result() as $row) {
-                if ($row->aberto == '1') {
-                    $empresaLogin['aberto'] = '1';
-                    $this->session->set_userdata('empresa_login', $empresaLogin);
-                    return true;
-                } else {
-                    $empresaLogin['aberto'] = '0';
-                    $this->session->set_userdata('empresa_login', $empresaLogin);
-                    return false;
-                }                
-            }
-        } else {
-            return false;
-        }
-    }
-
+    
 }
