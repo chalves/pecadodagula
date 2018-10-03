@@ -37,8 +37,20 @@ $foto = 'assets/img/fotos/' . $dadosLogin['fotoUsuario'];
                         <h3 class="text-center" style="padding: 1em 1em; margin-top: 3px"><b><<<<  Cadastrar Recado no Mural  >>>></b></h3>
                     </div>
                     <br />    
-                    <form method="post">                                            
-
+                    <form method="get" action="#" id="form-incluir-mural">                                            
+                        <div id="assunto-group" class="form-group">
+                            <div class="input-group">      
+                                <label for="assunto">Assunto</label>      
+                                <a href="#" >        
+                                    <i class="fa fa-info-circle mypopover " data-toggle="popover" data-placement="right" title="Assunto do Recado..." 
+                                       data-content="Informe aqui qual o assunto deste recado." ></i>
+                                </a>    
+                                <input type="text" class="form-control"  name="assunto" required  id="assunto-incluir"
+                                    value="<?php echo set_value('assunto'); ?>"  placeholder="Digite o assunto do recado ... "  size="150" >
+                                <span id="msgAssunto" class="help-block"></span>
+                            </div>  <!--  Fim  Input group   -->
+                        </div>    <!-- Fim  Form group   -->
+                        
                         <div id="destinatario-group"  class="form-group">
                             <div class="input-group">      
                                 <label for="destinatario">Destinatario</label>
@@ -71,6 +83,7 @@ $foto = 'assets/img/fotos/' . $dadosLogin['fotoUsuario'];
                                        data-content="O Nivel da prioridade ira definir o grau de importancia e urgencia da sua mensagem.." ></i>
                                 </a>    
                                 <select class="form-control" name="prioridade"  id="prioridade-incluir" >
+                                    <option value="-1">Selecione a prioridade...</option>
                                     <option value="0">Sem Prioridade</option>
                                     <option value="1">Normal</option>   
                                     <option value="2">Importante</option>
@@ -88,7 +101,7 @@ $foto = 'assets/img/fotos/' . $dadosLogin['fotoUsuario'];
                                        data-content="Digite a sua mensagem de forma clara e enjuta" ></i>
                                 </a>    
                                 <textarea  class="form-control"  name="recado-incluir" rows="4"  cols="80" required  id="recado-incluir"
-                                           placeholder="Digite o recado ... "  > </textarea>                            
+                                           placeholder="Digite o recado ... "  ></textarea>                            
                                 <span id="msgRecado" class="help-block"></span>
                             </div>  <!--  Fim  Input group   -->
                         </div>    <!-- Fim  Form group   -->
@@ -102,7 +115,7 @@ $foto = 'assets/img/fotos/' . $dadosLogin['fotoUsuario'];
                                 </button>                                                
 
                                 <button type="button" id='confirmar-inclusao' class="btn btn-success btn-block btn-flat btn-sm"
-                                        data-url='<?= base_url() ?>mural/exibir'>
+                                        data-url='<?= base_url() ?>mural/cadastrar'>
                                     <span class="fa fa-check img-circle text-primary btn-icon"></span>
                                     Confirmar
                                 </button>                                                                                

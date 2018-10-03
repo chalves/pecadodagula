@@ -17,7 +17,6 @@ class Model_mural extends CI_Model {
 
     function _construct() {
         parent::Model();
-        
     }
 
     function buscaMuralUsuario($idLogin) {
@@ -167,7 +166,25 @@ class Model_mural extends CI_Model {
         }
     }
 
-//  Final da funcao Responder
+//  Final da funcao Responder = $this->input->post('destinatario-input');
+    function cadastrar($dados = NULL) {
+        if ($dados !== NULL) {
+            extract($dados);
+            $this->db->insert('mural', array(
+                'idDE' => $dados ['idDE'],
+                'idEmpresa' => $dados ['idEmpresa'],
+                'idPara' => $dados ['destinatario'],
+                'assunto' => $dados ['assunto'],
+                'prioridade' => $dados ['prioridade'],
+                'recado' => $dados ['recado']
+                    )
+            );
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
 
 //  Final da Classe Mural

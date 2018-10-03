@@ -364,8 +364,8 @@ $fotoLogin = 'assets/img/fotos/' . $dadosLogin['fotoUsuario'];
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li class="active"><a href="<?= base_url() ?>dashboard"><i class="fa fa-pie-chart text-yellow"></i>Operacional do Dia</a></li>
-                        <li><a href="<?= base_url() ?>dashboard2"><i class="fa fa-line-chart  text-aqua "></i>Fechamento Mensal</a></li>
+                        <li class="active"><a href="<?= base_url() ?>home/dashboard"><i class="fa fa-pie-chart text-yellow"></i>Operacional do Dia</a></li>
+                        <li><a href="<?= base_url() ?>home/dashboard2"><i class="fa fa-line-chart  text-aqua "></i>Fechamento Mensal</a></li>
                     </ul>
                 </li>
                 <li class="treeview">

@@ -6,8 +6,11 @@
 $(document).ready(function () {
 
     $('#destinatario-incluir').on('change', function () {
-        alert('ttttttttttttttttttttttttttttttttttt');
         SelectDestinatarioIncluir(this.value, this);
+    })
+
+    $('#prioridade-incluir').on('change', function () {
+        SelectPrioridadeIncluir(this.value, this);
     })
 
     $('#cancelar-inclusao').click(function () {
@@ -17,7 +20,6 @@ $(document).ready(function () {
 
     $('[data-toggle="popover"]').popover(function () {
         $('#helpBlock2').hide();
-
     });
 
     $('.mypopover').popover();
@@ -54,22 +56,45 @@ $(document).ready(function () {
 
     function SelectDestinatarioIncluir(index, el) {
         if (el.value == "-1") {
-            msg1 = "Favor selecionar o Destinatario da mensagem...";         
+            msg1 = "Favor selecionar o Destinatario da mensagem...";
             $('#destinatario-group').attr('class', 'form-group has-error');
             $("#msgDestinatario").text(msg1).show();
         } else {
             msg1 = '';
             $('#destinatario-group').attr('class', 'form-group');
-            $("#erroPrioridade").text(msg1).show();
+            $("#msgDestinatario").text(msg1).show();
         }
     }
 
+    function SelectPrioridadeIncluir(index, el) {
+        if (el.value == "-1") {
+            msg1 = "Favor selecionar qual a Prioridade da mensagem...";
+            $('#prioridade-group').attr('class', 'form-group has-error');
+            $("#msgPrioridade").text(msg1).show();
+        } else {
+            msg1 = '';
+            $('#prioridade-group').attr('class', 'form-group');
+            $("#msgPrioridade").text(msg1).show();
+        }
+    }
     function ConfirmarInclusaoMural() {
         var recado = $('#recado-incluir').val();
         var prior = $('#prioridade-incluir').val();
         var destinatario = $('#destinatario-incluir').val();
+        var assunto = $('#assunto-incluir').val();
 
         indicErro = 0;
+
+        if (assunto ===  "") {
+            msg2 = "O campo assunto está em branco...!";
+            indicErro = 2;
+            $('#assunto-group').attr('class', 'form-group has-error');
+            $("#msgAssunto").text(msg2).show();
+        } else {
+            msg2 = '';
+            $('#assunto-group').attr('class', 'form-group');
+            $("#msgAssunto").text(msg2).show();
+        }
 
         if (destinatario === "-1") {
             msg1 = "Favor selecionar o Destinatario da mensagem...";
@@ -82,15 +107,25 @@ $(document).ready(function () {
             $("#erroPrioridade").text(msg1).show();
         }
 
+        if (prior == "-1") {
+            msg1 = "Favor selecionar qual a Prioridade da mensagem...";
+            $('#prioridade-group').attr('class', 'form-group has-error');
+            $("#msgPrioridade").text(msg1).show();
+        } else {
+            msg1 = '';
+            $('#prioridade-group').attr('class', 'form-group');
+            $("#msgPrioridade").text(msg1).show();
+        }
+
         if (recado === "") {
             msg2 = "O campo de resposta está em branco. Favor digitar a sua resposta..!";
             indicErro = 2;
-            $('#resposta-group').attr('class', 'form-group has-error');
-            $("#msgResposta").text(msg1).show();
+            $('#recado-group').attr('class', 'form-group has-error');
+            $("#msgRecado").text(msg2).show();
         } else {
             msg2 = '';
-            $('#resposta-group').attr('class', 'form-group');
-            $("#msgResposta").text(msg2).show();
+            $('#recado-group').attr('class', 'form-group');
+            $("#msgRecado").text(msg2).show();
         }
 
         if (indicErro != 0) {
@@ -98,11 +133,17 @@ $(document).ready(function () {
         }
 
         var resposta = confirm("Deseja realmente incluir  o recado no Mural?");
+        
         if (resposta == true) {
-            var url = $('#cancelar-inclusao').attr('data-url');
-            $(location).attr('href', url);
-            // return true;
+            var url = $('#confirmar-inclusao').attr('data-url');
+            
+            $('#form-incluir-mural').attr('action', url);
+            $('#form-incluir-mural').submit();
+            
+            // $(location).attr('href', url);          
+            return true;
         }
+        
         event.preventDefault();
         return false;
     }
